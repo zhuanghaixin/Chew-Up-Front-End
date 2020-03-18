@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全屏模式</title>
+</head>
+<body>
+<style>
+    #my-text-a {
+        background-color: black;
+        color: white;
+    }
+
+    #my-image-b::backdrop {
+        opacity: 0.8;
+        background: #DFA612;
+    }
+
+    #my-text-b:fullscreen {
+        padding: 42px;
+        background-color: pink;
+        border: 2px solid #f00;
+        font-size: 200%;
+
+    }
+
+
+</style>
+<h1>激活/取消全屏模式</h1>
+<button onclick="activateFullscreen(document.documentElement);">
+    Go fullscreen!
+</button>
+<button onclick="deactivateFullscreen();">
+    Leave fullscreen
+</button>
+<h1>在标签中使用全屏(Fullscreen)API</h1>
+<button onclick="activateFullscreen(document.getElementById('my-text-a'));">
+    Fullscreen #my-text-a
+</button>
+<button onclick="activateFullscreen(document.getElementById('my-image-a'))">
+    Fullscreen #my-image-a
+</button>
+<button onclick="activateFullscreen(document.getElementById('my-video'))">
+    Fullscreen #my-video
+</button>
+<h2 id="my-text-a">Hello world</h2>
+<img id="my-image-a"
+     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584477989986&di=dc7bbe02f1df393b65e39d2890bdace0&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201307%2F31%2F20130731205922_uQzvy.thumb.700_0.jpeg"
+     width="200"/>
+<video id="my-video" controls src="https://www.w3school.com.cn/example/html5/mov_bbb.mp4"></video>
+<h1>CSS设置全局模式</h1>
+<button onclick="activateFullscreen(document.getElementById('my-text-b'))">
+    Fullscreen #my-text-b
+</button>
+<button onclick="activateFullscreen(document.getElementById('my-image-b'))">
+    Fullscreen #my-image-b
+</button>
+<h2 id="my-text-b">Hello world</h2>
+<img id="my-image-b"
+     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584477989986&di=dc7bbe02f1df393b65e39d2890bdace0&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201307%2F31%2F20130731205922_uQzvy.thumb.700_0.jpeg"
+     width="200"/>
+
+
+</body>
+<script>
+    //激活全屏模式
+    function activateFullscreen(element) {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();        // W3C spec
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();     // Firefox
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();  // Safari
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();      // IE/Edge
+        }
+    };
+
+    //取消全屏模式
+    function deactivateFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    };
+</script>
+</html>
